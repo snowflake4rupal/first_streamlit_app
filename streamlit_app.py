@@ -42,5 +42,5 @@ my_data_rows = my_cur.fetchall()
 streamlit.text("The fruit load list contains:")
 streamlit.text(my_data_rows)
 fruitlist_normalized = pandas.json_normalize(my_data_rows)
-
+streamlit.dataframe(fruitlist_normalized)
 
