@@ -39,8 +39,7 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")#("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_rows = my_cur.fetchall()
-streamlit.text("The fruit load list contains:")
-streamlit.text(my_data_rows)
-fruitlist_normalized = pandas.json_normalize(my_data_rows)
-streamlit.dataframe(fruitlist_normalized)
+streamlit.header("The fruit load list contains:")
+streamlit.dataframe(my_data_rows)
+
 
