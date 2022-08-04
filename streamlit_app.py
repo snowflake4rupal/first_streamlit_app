@@ -41,6 +41,6 @@ my_cur.execute("select * from fruit_load_list")#("SELECT CURRENT_USER(), CURRENT
 my_data_rows = my_cur.fetchall()
 streamlit.text("The fruit load list contains:")
 streamlit.text(my_data_rows)
-fruitlist_normalized = pandas.json_normalize(my_data_rows.json())
+fruitlist_normalized = pandas.json_normalize(my_data_rows)
 
 
