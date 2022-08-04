@@ -48,10 +48,20 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 # requests.get("https://fruityvice.com/api/fruit/kiwi")
 # streamlit.text(fruityvice_response) #writes how many responses were received
 
-# write your own comment -flattens the json file
-
-# write your own comment - puts the normalized data in a dataframe (table format) to make it easy to read
-
+streamlit.header("The fruit load list contains:")
+# Snowflake related function
+def get_fruit_load_list:
+  with my_cnx.cursor() as my_cur:
+       my_cur.execute("select * from fruit_load_list")
+       return my_cur.fetchall()
+    
+# Add a button to load the fruit
+streamlit.dataframe(my_data_rows)
+if streamlit.button('Get Fruit Load List'):
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    my_data_rows = get_fruit_load_list()
+    streamlit.dataframe(my_data_rows)
+    
 # import snowflake.connector 
 streamlit.stop()
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
